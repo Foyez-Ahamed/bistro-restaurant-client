@@ -1,5 +1,3 @@
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import signUp from "../../assets/others/authentication2.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -10,9 +8,12 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { getAuth, updateProfile } from "firebase/auth";
 import app from "../../firebaseConfig/firebase.config";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 const auth = getAuth(app);
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const [showPassIcon, setShowPassIcon] = useState(false);
   const {userSignUp} = useAuth();
   const navigate = useNavigate();
@@ -38,9 +39,23 @@ const SignUp = () => {
           .then()
           .catch()
 
-          toast.success('Successfully sign up');
-          reset();
-          navigate(from, {replace:true});
+          // ...... //
+          const userInfo = {
+            name : data.name,
+            email : data.email,
+            image : data.photoUrl
+          }
+
+          axiosPublic.post('/api/v1/createUser', userInfo)
+          .then(res => {
+            if(res.data.insertedId){
+              console.log('user added to the database');
+              toast.success('Successfully sign up');
+              reset();
+              navigate(from, {replace:true});
+            }
+          })
+          // ...... //
      })
      .then();
   };
@@ -165,20 +180,10 @@ const SignUp = () => {
               <div className="mt-8 text-center">
                 <h1 className="font-bold"> Or Sign up with </h1>
 
-                <div className="flex items-center justify-center gap-6 mt-6">
-                  <button>
-                    {" "}
-                    <FaFacebook className="text-xl text-blue-700"></FaFacebook>{" "}
-                  </button>
-                  <button>
-                    {" "}
-                    <FaLinkedin className="text-xl text-blue-700"></FaLinkedin>{" "}
-                  </button>
-                  <button>
-                    {" "}
-                    <FcGoogle className="text-xl"></FcGoogle>{" "}
-                  </button>
-                </div>
+
+               <SocialLogin></SocialLogin>
+
+
               </div>
             </div>
           </div>

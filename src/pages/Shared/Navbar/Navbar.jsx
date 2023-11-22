@@ -4,11 +4,14 @@ import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, userLogout } = useAuth();
 
   const [cart] = useCart();
+
+  const [isAdmin] = useAdmin();
 
   const handleLogout = () => {
     userLogout()
@@ -56,14 +59,28 @@ const Navbar = () => {
         <li className="text-[16px] font-medium ml-4">ORDERS</li>
       </NavLink>
 
-      {/* <NavLink
-        to="/secret"
+
+      {
+        user && isAdmin && <NavLink
+        to="/dashboard/adminHome"
         className={({ isActive, isPending }) =>
           isActive ? "text-[#EEFF25]" : isPending ? "pending" : ""
         }
       >
-        <li className="text-[16px] font-medium ml-4">MY ORDERS</li>
-      </NavLink> */}
+        <li className="text-[16px] uppercase font-medium ml-4">Dashboard</li>
+      </NavLink>
+      }
+
+      {
+        user && !isAdmin && <NavLink
+        to="/dashboard/userHome"
+        className={({ isActive, isPending }) =>
+          isActive ? "text-[#EEFF25]" : isPending ? "pending" : ""
+        }
+      >
+        <li className="text-[16px] uppercase font-medium ml-4">Dashboard</li>
+      </NavLink>
+      }
 
     </>
   );

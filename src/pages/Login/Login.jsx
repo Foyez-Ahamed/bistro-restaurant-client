@@ -1,5 +1,3 @@
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import signUp from "../../assets/others/authentication2.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -8,6 +6,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-s
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
 
@@ -18,10 +17,8 @@ const Login = () => {
   const location = useLocation();
 
   const from = location.state?.from?.pathname || '/';
-  console.log(from);
 
-  console.log('food order', location.state);
-  
+
   const handleLogin = e => {
     e.preventDefault();
     const form = e.target;
@@ -37,6 +34,17 @@ const Login = () => {
     .then();
 
   }
+
+  // google login //
+  // const handleGoogleLogin = () => {
+  //   googleLogin()
+  //   .then( () => {
+  //     toast.success('Successfully login');
+  //     navigate(from, {replace:true});
+  //   })
+  //   .then();
+  // }
+  // google login //
 
   const handleCaptcha = (e) =>{
 
@@ -142,20 +150,8 @@ const Login = () => {
               <div className="mt-8 text-center">
                 <h1 className="font-bold"> Or Sign In with </h1>
 
-                <div className="flex items-center justify-center gap-6 mt-6">
-                  <button>
-                    {" "}
-                    <FaFacebook className="text-xl text-blue-700"></FaFacebook>{" "}
-                  </button>
-                  <button>
-                    {" "}
-                    <FaLinkedin className="text-xl text-blue-700"></FaLinkedin>{" "}
-                  </button>
-                  <button>
-                    {" "}
-                    <FcGoogle className="text-xl"></FcGoogle>{" "}
-                  </button>
-                </div>
+                <SocialLogin></SocialLogin>
+
               </div>
             </div>
           </div>

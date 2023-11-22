@@ -3,6 +3,7 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useCart from "../../../hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -49,7 +50,7 @@ const Cart = () => {
     <div>
       <div>
         <SectionTitle
-          heading={"sADD MORE?"}
+          heading={"ADD MORE?"}
           subTitle={"---My Cart---"}
         ></SectionTitle>
       </div>
@@ -57,15 +58,23 @@ const Cart = () => {
       <div className="flex justify-between">
         <h1 className="text-xl font-bold">Total items : {totalItems}</h1>
         <h2 className="text-xl font-bold">Total price : {totalPrice}</h2>
-        <button className="px-5  bg-gray-200 border-b-4 rounded-md text-[#BB8506] border-[#BB8506] hover:bg-[#111827]">
+
+        {
+           cart.length ? <Link to='/dashboard/payment'><button className="px-5  bg-gray-200 border-b-4 rounded-md text-[#BB8506] border-[#BB8506] hover:bg-[#111827] cursor-pointer">
+           Pay
+         </button> </Link> :
+
+          <button disabled className="px-5  bg-gray-200 border-b-4 rounded-md text-[#BB8506] border-[#BB8506] cursor-pointer">
           Pay
         </button>
+        }
+
       </div>
 
       <div className="mt-10">
         
       <div className="overflow-x-auto">
-  <table className="table">
+    <table className="table">
     {/* head */}
     <thead>
       <tr>
@@ -110,6 +119,7 @@ const Cart = () => {
 </div>
 
       </div>
+      
     </div>
   );
 };
