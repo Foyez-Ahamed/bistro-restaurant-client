@@ -9,10 +9,11 @@ import {
 import { MdOutlineMail } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
-// import useCart from "../hooks/useCart";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
-  //   const [cart] = useCart();
+
+  const [cart] = useCart();
 
   const [isAdmin] = useAdmin();
 
@@ -64,7 +65,7 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="/dashboard/cart">
                     {" "}
-                    <FaCartShopping></FaCartShopping> My Cart
+                    <FaCartShopping></FaCartShopping> My Cart({cart.length})
                   </NavLink>
                 </li>
 
@@ -90,9 +91,9 @@ const Dashboard = () => {
                 </li>
 
                 <li>
-                  <NavLink to="/dashboard/bookings">
+                  <NavLink to="/dashboard/paymentHistory">
                     {" "}
-                    <FaList></FaList> My Bookings
+                    <FaList></FaList> Payment History
                   </NavLink>
                 </li>
               </>
