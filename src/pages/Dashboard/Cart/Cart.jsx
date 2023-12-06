@@ -33,10 +33,12 @@ const Cart = () => {
             if(res.data.deletedCount > 0){
                 refetch();
                 Swal.fire({
-                    title: "Deleted!",
-                    text: "Your item has been deleted.",
-                    icon: "success"
-                  });
+                  position: "top",
+                  icon: "success",
+                  title: "Item deleted successfully",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
             }
         })
 

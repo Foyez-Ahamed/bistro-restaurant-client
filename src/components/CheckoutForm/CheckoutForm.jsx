@@ -7,8 +7,11 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
+
   const [error, setError] = useState('');
+
   const [clientSecret, setClientSecret] = useState('');
+
   const [transactionId, setTransactionId] = useState('');
 
   const navigate = useNavigate();
@@ -41,6 +44,7 @@ const CheckoutForm = () => {
 
 
   const handleSubmit = async (event) => {
+
     event.preventDefault();
 
     if(!stripe || !elements){
@@ -58,6 +62,7 @@ const CheckoutForm = () => {
         card
     })
 
+
     if(error){
         console.log('Payment error', error);
         setError(error.message)
@@ -71,7 +76,7 @@ const CheckoutForm = () => {
     // confirm payment // 
     const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card : card,
+        card : card, //card info came from line 54
         billing_details: {
           email : user?.email || 'anonymous',
           name : user?.displayName || 'anonymous'
@@ -90,7 +95,6 @@ const CheckoutForm = () => {
         setTransactionId(paymentIntent.id);
 
         // now save the payment in database // 
-
         const payment = {
           email : user?.email,
           price : totalPrice,

@@ -1,16 +1,31 @@
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 
 const ChefRecommend = () => {
 
-    const [recommend, setRecommend] = useState([]);
+   const axiosPublic = useAxiosPublic();
 
-    useEffect(() => {
-        fetch('recommends.json')
-        .then(res => res.json())
-        .then(data => setRecommend(data))
-    },[])
+   const {data : recommend = [] } = useQuery({
+    queryKey : ['recommend'],
+    queryFn : async() => {
+      const res = await axiosPublic.get(`/api/v1/recommends`)
+
+      return res.data
+    }
+
+   })
+
+  //  console.log(recommend);
+    // const [recommend, setRecommend] = useState([]);
+
+    // useEffect(() => {
+    //     fetch('recommends.json')
+    //     .then(res => res.json())
+    //     .then(data => setRecommend(data))
+    // },[])
 
     return (
         <section>
@@ -28,7 +43,11 @@ const ChefRecommend = () => {
                       <h2 className="card-title">{item.name}</h2>
                       <p>{item.description}</p>
                       <div className="card-actions">
-                        <button className="px-5 py-2 bg-gray-200 border-b-4 rounded-md text-[#BB8506] border-[#BB8506]">Add to Cart</button>
+
+                       <Link to='/menu'>
+                       <button className="px-5 py-2 bg-gray-200 border-b-4 rounded-md text-[#BB8506] border-[#BB8506] hover:bg-zinc-900">Add to Cart</button>
+                       </Link>
+
                       </div>
                     </div>
                   </div>)

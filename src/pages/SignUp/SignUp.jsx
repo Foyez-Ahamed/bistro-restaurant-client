@@ -13,9 +13,11 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 const auth = getAuth(app);
 
 const SignUp = () => {
+
   const axiosPublic = useAxiosPublic();
   const [showPassIcon, setShowPassIcon] = useState(false);
   const {userSignUp} = useAuth();
+  
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,6 +32,7 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+
      userSignUp(data.email, data.password)
      .then(() => {
         updateProfile(auth.currentUser, {
@@ -63,8 +66,9 @@ const SignUp = () => {
   return (
     <>
     <Helmet>
-        <title>Bistro | SignUp</title>
+        <title>Boss Cafe | SignUp</title>
     </Helmet>
+
     <div className=" mt-4 lg:mt-24">
       <section className="flex flex-col-reverse lg:flex-row justify-between gap-6">
         <div className="flex-1 justify-center items-center mt-16">
@@ -75,7 +79,7 @@ const SignUp = () => {
           <div>
             <div className="shadow-xl p-8 w-full md:w-[450px] lg:w-[450px] rounded-xl dark:text-black bg-gray-100">
               <div>
-                <h1 className="text-center font-medium text-3xl text-[#403F3F] mb-6">
+                <h1 className="text-center font-medium text-3xl mb-6">
                   Sign Up
                 </h1>
               </div>
@@ -190,6 +194,7 @@ const SignUp = () => {
         </div>
       </section>
     </div>
+
     </>
   );
 };

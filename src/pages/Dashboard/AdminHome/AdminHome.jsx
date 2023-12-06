@@ -66,6 +66,7 @@ const AdminHome = () => {
           <div className="stat-value text-white">{stats.orders}</div>
         </div>
       </div>
+      
     </div>
   );
 };

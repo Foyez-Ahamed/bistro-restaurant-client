@@ -18,12 +18,15 @@ import Payment from "../pages/Dashboard/Payment/Payment";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import ContactUs from "../pages/ContactUs/ContactUs";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const Route = createBrowserRouter([
 
     {
         path:'/',
         element:<MainLayout></MainLayout>,
+        errorElement : <ErrorPage></ErrorPage>,
         children: [
             {
                 path:'/',
@@ -38,6 +41,11 @@ const Route = createBrowserRouter([
             {
                 path:'/order/:category',
                 element: <Order></Order>
+            },
+
+            {
+                path : '/contact',
+                element : <ContactUs></ContactUs>
             },
 
             {

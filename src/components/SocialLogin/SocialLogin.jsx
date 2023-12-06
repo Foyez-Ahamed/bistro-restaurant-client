@@ -9,6 +9,7 @@ const SocialLogin = () => {
 
     const axiosPublic = useAxiosPublic();
     const {googleLogin} = useAuth();
+    
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -44,6 +45,7 @@ const SocialLogin = () => {
 
   return (
     <div>
+
       <div className="flex items-center justify-center gap-6 mt-6">
         <button>
           {" "}
@@ -58,6 +60,7 @@ const SocialLogin = () => {
           <FcGoogle className="text-xl"></FcGoogle>{" "}
         </button>
       </div>
+
     </div>
   );
 };

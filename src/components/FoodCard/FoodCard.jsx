@@ -34,7 +34,7 @@ const FoodCard = ({ item }) => {
         Swal.fire({
           position: "top",
           icon: "success",
-          title: `${name} has been saved`,
+          title: `${name} has been saved cart`,
           showConfirmButton: false,
           timer: 1500
         });

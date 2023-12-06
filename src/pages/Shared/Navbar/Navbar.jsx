@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { FaCartShopping } from "react-icons/fa6";
 import useCart from "../../../hooks/useCart";
 import useAdmin from "../../../hooks/useAdmin";
+import logo from "../../../assets/logo/meta_logo-removebg-preview.png"
 
 const Navbar = () => {
   const { user, userLogout } = useAuth();
@@ -87,7 +88,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="navbar rounded-md fixed bg-zinc-700 bg-opacity-30 z-10 text-white w-[410px] md:w-[688px] lg:w-[1102px] mx-auto">
+      <div className="navbar rounded-md fixed bg-zinc-900 bg-opacity-30 z-10 text-white w-[410px] md:w-[688px] lg:w-[1102px] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -104,12 +105,14 @@ const Navbar = () => {
           <div className="flex justify-center items-center">
             <Link to="/">
               <a className="cursor-pointer">
-                <h1 className=" text-[12px] lg:text-xl font-bold">
+                {/* <h1 className=" text-[12px] lg:text-xl font-bold">
                   BISTRO BOSS <br />
                   <span className="lg:text-[16px] tracking-widest ">
                     Restaurant
                   </span>
-                </h1>
+                </h1> */}
+
+                <img src={logo} className="w-[150px] h-[50px] object-cover"  alt="logo" />
               </a>
             </Link>
           </div>
@@ -118,13 +121,15 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
+        
 
         <div className="navbar-end">
           <div className="mr-4">
-             <Link to='/dashboard/cart'>
+            {/* to='/dashboard/cart' */}
+             <Link> 
              <button className="flex">
                <FaCartShopping className="text-2xl"></FaCartShopping>
-              <div className="badge badge-secondary -mt-3">+{cart.length}</div>
+              <div className="badge bg-[#EEFF25] font-bold -mt-3">+{cart.length}</div>
             </button>
              </Link>
           </div>

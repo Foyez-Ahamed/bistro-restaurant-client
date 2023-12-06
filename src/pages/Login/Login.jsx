@@ -2,7 +2,9 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import signUp from "../../assets/others/authentication2.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+
+// import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
@@ -11,7 +13,7 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 const Login = () => {
 
   const [showPassIcon, setShowPassIcon] = useState(false);
-  const [disabled, setDisabled] = useState(true);
+  // const [disabled, setDisabled] = useState(true);
   const {userLogin} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,27 +48,28 @@ const Login = () => {
   // }
   // google login //
 
-  const handleCaptcha = (e) =>{
+  // const handleCaptcha = (e) =>{
 
-     const value =e.target.value;
+  //    const value =e.target.value;
 
-     if(validateCaptcha(value)){
-        setDisabled(false)
-     } else{
-        setDisabled(true)
-     }
+  //    if(validateCaptcha(value)){
+  //       setDisabled(false)
+  //    } else{
+  //       setDisabled(true)
+  //    }
      
-  }
+  // }
   
-  useEffect(() => {
-    loadCaptchaEnginge(6); 
-  },[])  
+  // useEffect(() => {
+  //   loadCaptchaEnginge(6); 
+  // },[])  
 
   return (
    <>
    <Helmet>
-        <title>Bistro | SignIn</title>
+        <title>Boss Cafe | SignIn</title>
    </Helmet>
+
     <div className=" mt-4 lg:mt-24">
       <section className="flex flex-col-reverse lg:flex-row justify-between gap-6">
         <div className="flex-1 justify-center items-center mt-16">
@@ -106,7 +109,7 @@ const Login = () => {
                     className="mt-4 input  w-full md:w-[390px] lg:w-[390px]"
                   />
                   </div>
-
+{/* 
                  <div className="mt-4">
                  <label htmlFor="email"><LoadCanvasTemplate /></label>
                   <input
@@ -117,7 +120,7 @@ const Login = () => {
                     className="mt-4 input  w-full md:w-[390px] lg:w-[390px]"
                   />{" "}
 
-                 </div>
+                 </div> */}
                  
                   <span
                     onClick={() => setShowPassIcon(!showPassIcon)}
@@ -158,6 +161,7 @@ const Login = () => {
         </div>
       </section>
     </div>
+    
    </>
   );
 };

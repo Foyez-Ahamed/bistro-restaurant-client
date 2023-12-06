@@ -6,6 +6,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const image_hosting = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting}`;
 
 
@@ -116,6 +117,7 @@ const AddItems = () => {
               </div>
 
               <div className="flex flex-col md:flex-col lg:flex-row gap-6 mt-3">
+
                 <div className="form-control">
                   <label>Recipe Details*</label>
                   <textarea
@@ -125,6 +127,7 @@ const AddItems = () => {
                     placeholder="Bio"
                   ></textarea>{" "}
                 </div>
+                
               </div>
 
               <div className="flex flex-col md:flex-col lg:flex-row gap-6 mt-4">
