@@ -117,7 +117,7 @@ const Dashboard = () => {
             </li>
 
             <li>
-              <NavLink to="/menu">
+              <NavLink to="/contact">
                 {" "}
                 <MdOutlineMail></MdOutlineMail> Contact
               </NavLink>

@@ -28,7 +28,7 @@ const Order = () => {
     return (
         <div>
             <Helmet>
-             <title>Bistro | Order</title>
+             <title>Boss Cafe | Order</title>
            </Helmet>
 
            <div className="space-y-10">

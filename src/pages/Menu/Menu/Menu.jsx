@@ -28,7 +28,7 @@ const Menu = () => {
   return (
     <div>
       <Helmet>
-        <title>Bistro | Menu</title>
+        <title>Boss Cafe | Menu</title>
       </Helmet>
       
       <div className="space-y-10">
